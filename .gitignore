@@ -1,2 +1,4 @@
 # Ignore data files
 data/**
+# Ignore py folder automatically generated
+__pycache__
