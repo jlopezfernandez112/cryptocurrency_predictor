@@ -7,28 +7,26 @@
 
 
 def check_battery():
-    """Checks the battery."""
+    """Checks the battery. It returns battery percentage as an integer."""
+    # import the module
     import psutil
-
+    
     battery = psutil.sensors_battery()
     plugged = battery.power_plugged
-    
     return battery.percent
-
 
 
 def warning():
     """Send an email from my gmail account to myself warning on low battery.
     
-    Add this function to the twitter long term extraction function.
-    It imports some modules to work.
+    Add this function to the twitter long term retrieval function.
     It takes no arguments.
     """
-    # import modules
+    # import the necessary modules
     import os
     import smtplib
     from email.message import EmailMessage
-    # setting up variables
+    # set up some variables
     mail = 'jlopezfernandez112@gmail.com'
     py_gmail_password = os.environ.get('PyGmail')
     # message info
@@ -42,18 +40,17 @@ def warning():
         smtp.login(mail, py_gmail_password)
         smtp.send_message(msg)
         
-      
     
 def last_lap_reminder():
     """Send an email from my gmail account to myself reminding this is the last lap.
     
     45 mins aprox. to finish the extraction. 
     """
-    # import modules
+    # import the necessary modules
     import os
     import smtplib
     from email.message import EmailMessage
-    # setting up variables
+    # set up some variables
     mail = 'jlopezfernandez112@gmail.com'
     py_gmail_password = os.environ.get('PyGmail')
     # message info
@@ -73,11 +70,11 @@ def error_email():
     
     Probably because we exceeded the limit requests. It definitely should not. 
     """
-    # import modules
+    # import the necessary modules
     import os
     import smtplib
     from email.message import EmailMessage
-    # setting up variables
+    # set up some variables
     mail = 'jlopezfernandez112@gmail.com'
     py_gmail_password = os.environ.get('PyGmail')
     # message info
@@ -90,4 +87,3 @@ def error_email():
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login(mail, py_gmail_password)
         smtp.send_message(msg)
-
