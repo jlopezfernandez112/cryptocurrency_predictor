@@ -44,7 +44,7 @@ def warning():
 def last_lap_reminder():
     """Send an email from my gmail account to myself reminding this is the last lap.
     
-    45 mins aprox. to finish the extraction. 
+    20 mins aprox. to finish the extraction. 
     """
     # import the necessary modules
     import os
@@ -58,7 +58,7 @@ def last_lap_reminder():
     msg['Subject'] = 'Last lap remainder'
     msg['From'] = mail
     msg['To'] = mail
-    msg.set_content('In 45 mins aprox. the extraction will be over.')
+    msg.set_content('In 20 mins aprox. the extraction will be over.')
     # send the email
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login(mail, py_gmail_password)
