@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
 # These are some functions to complete the twitter extraction.
 # This file will be imported as a module in the main notebook.
 
