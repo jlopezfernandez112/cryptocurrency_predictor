@@ -1,4 +1,5 @@
 # cryptocurrency_predictor
+
 This is a repo exclusively dedicated to my Masters Final Project in KSchool
 
 I intend to make a crypto currency predictor based on twitter sentiments.
