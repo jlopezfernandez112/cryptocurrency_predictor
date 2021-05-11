@@ -94,7 +94,7 @@ if option == 'Features':
 elif option == 'EDA':
     st.subheader('Insights of Twitter sentiments')
     st.write('Since each tweet has a polarity score we classified them as positive or negative.')
-    for wc, emotion in zip(['wc_pos.jpg', 'wc_neg.jpg'], ['positive', 'negative']):
+    for wc, emotion in zip(['images/wc_pos.jpg', 'images/wc_neg.jpg'], ['positive', 'negative']):
         st.write(f'**Top words for {emotion} Bitcoin tweets**')
         with Image.open(wc) as img:
             st.image(img)
