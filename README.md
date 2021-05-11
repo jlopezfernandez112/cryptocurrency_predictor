@@ -19,7 +19,7 @@ In this project we present a method for predicting Bitcoin closing prices utiliz
 
 Data has been collected from several sources.
 
-Refer to the [1 Data Extraction](1_data_extraction.ipynb) notebook.
+Refer to the [1 Data Extraction](notebooks/1_data_extraction.ipynb) notebook.
 
 ### Twitter
 
@@ -57,13 +57,31 @@ It is necessary to apply for an API key [here](https://www.binance.com/en/suppor
 
 ## Repo Structure
 
+**frontend:** Code to execute from the terminal. Made with `streamlit`
+- [Bitcoin predictions](frontend/bitcoin_predictor.py)
 
+**images:** Two wordclouds for streamlit purposes
+
+**notebooks:** Jupyter notebooks with explanations
+- [1 Data Extraction](notebooks/1_data_extraction.ipynb)
+- [2 EDA](notebooks/2_EDA.ipynb)
+- [3 Crypto Analysis](notebooks/3_crypto_analysis.ipynb)
+- [4 Time Series](notebooks/4_time_series.ipynb)
+- [5 Recurrent Neural Networks](notebooks/5_RNN.ipynb)
+
+[requirements](requirements.txt)
 
 
 ## Requirements
 
-
-
+To create an environment run the following command
+```conda
+$ conda create --name <env> --file requirements.txt
+```
+To activate it run
+```conda
+$ conda activate <env>
+```
 
 
 
