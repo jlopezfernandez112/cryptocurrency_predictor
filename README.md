@@ -38,6 +38,8 @@ A script was made in order to be collecting tweets for 4 consecutive weeks (28 d
 - Date of post
 - Source
 
+API credentials will be necessary.
+
 ### Google Trends
 
 Google Trends is a website supported by Google that analyzes the popularity of a specific keyword search queries in Google Search.
@@ -50,50 +52,42 @@ The [Binance API](https://github.com/binance/binance-spot-api-docs/blob/master/r
 
 Binance has quickly grown to become one of the largest cryptocurrency exchanges offering trading in more than 500 coins and tokens.
 
-`binance` library was installed by running `conda install -c royalnorton binance` *compatible with python 3.6* 
+`binance` library was installed by running `conda install -c royalnorton binance` *compatible with python 3.6*
 
-It is necessary to apply for an API key [here](https://www.binance.com/en/support/faq/360002502072).
+API credentials will be necessary.
 
 
 ## Repo Structure
 
-**frontend:** Code to execute from the terminal. Made with `streamlit`
-- [Bitcoin predictions](frontend/bitcoin_predictor.py)
+1. **frontend:** Code to execute from the terminal. Made with `streamlit`
+ - [Bitcoin predictions](frontend/bitcoin_predictor.py)
 
-**images:** Two wordclouds for streamlit purposes
+2. **images:** Two wordclouds for streamlit purposes
 
-**notebooks:** Jupyter notebooks with explanations
-- [1 Data Extraction](notebooks/1_data_extraction.ipynb)
-- [2 EDA](notebooks/2_EDA.ipynb)
-- [3 Crypto Analysis](notebooks/3_crypto_analysis.ipynb)
-- [4 Time Series](notebooks/4_time_series.ipynb)
-- [5 Recurrent Neural Networks](notebooks/5_RNN.ipynb)
+3. **notebooks:** Jupyter notebooks with explanations
+ - [1 Data Extraction](notebooks/1_data_extraction.ipynb): Scripts were built to retrive data from the Twitter API, Bitcoin data, from Binance API and Bitcoin Google searches from `pytrends`.
+ - [2 EDA](notebooks/2_EDA.ipynb): We aim to get some meaningful information from Bitcoin tweets and apply a sentiment analyser to get a polarity score for each one of the tweets. Then we calculate a main score for each tweet by taking into account the users' number of followers.
+ - [3 Crypto Analysis](notebooks/3_crypto_analysis.ipynb): We aim to study the correlations between Bitcoin closing prices and the input features: Twitter sentiment scores, Google Trends and volume of Bitcoins traded.
+ - [4 Time Series](notebooks/4_time_series.ipynb): Multivariate time series forecasting with Vector Autorregressive Model.
+ - [5 Recurrent Neural Networks](notebooks/5_RNN.ipynb): Bitcoin closing prices predictions with LSTM and GRU
 
-[requirements](requirements.txt)
+4. [requirements](requirements.txt)
 
 
 ## Requirements
 
-To create an environment run the following command
+To create an environment, run the following command
 ```conda
 $ conda create --name <env> --file requirements.txt
 ```
-To activate it run
+
+To activate it, run the following command
 ```conda
 $ conda activate <env>
 ```
 
+In order to run the notebooks you will need to download the data used for the study [here](https://drive.google.com/drive/folders/1m_9TyEM0wyw5RhoAT2oQ0sGVswz0m18r?usp=sharing) and save it locally to the repo directory.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+Applying for API keys:
+- Twitter --> [apply](https://developer.twitter.com/en/apply-for-access)
+- Binance --> [apply](https://www.binance.com/en/support/faq/360002502072)

@@ -1,11 +1,12 @@
+# ------------ import necessary libraries ------------
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 from PIL import Image
-pd.set_option('display.max_colwidth', None)
 
 
+# ------------ set a title for our website ------------
 st.title('Cryptocurrency Predictor')
 st.write("""
 Based on twitter sentiments,
@@ -16,7 +17,8 @@ and recurrent neural networks.
 Period of study: 21/02/2021 - 20/03/2021
 """)
 
-## Paths
+
+# ------------ define necessary paths ------------
 btc_path = 'data/crypto/BTCUSDT_1h_data.csv'
 tweets_path = 'data/twitter/tweets.csv'
 scores_path = 'data/twitter/scores_sample.csv'
@@ -25,7 +27,8 @@ var_pred_path = 'data/forecasts/var.csv'
 lstm_pred_path = 'data/forecasts/lstm.csv'
 gru_pred_path = 'data/forecasts/gru.csv'
 
-## Getting dfs ready
+
+# ------------ getting dataframes ready ------------
 # Bitcoin
 df_btc = pd.read_csv(btc_path, parse_dates=True, index_col='timestamp')
 df_btc = df_btc[(df_btc.index >= '2021-02-21 00:00:00') & (df_btc.index <= '2021-03-20 23:50:31')]
@@ -45,13 +48,12 @@ lstm_forecast = pd.read_csv(lstm_pred_path, index_col='dates', parse_dates=True)
 # GRU forecasts
 gru_forecast = pd.read_csv(gru_pred_path, index_col='dates', parse_dates=True)
 
-## Image as intro
 
-## Select option from the side bar
+# ------------ Select option from the side bar ------------
 option = st.sidebar.selectbox('Choose an option', ('Features', 'EDA', 'Predictions'))
 
 
-## Features
+# ------------ Features ------------
 if option == 'Features':
     st.write("""
     Four variables were used to carry out the project.
@@ -90,7 +92,8 @@ if option == 'Features':
     fig = px.line(x=df_btc.index, y=df_btc['volume'], labels={'x': 'date', 'y': 'bitcoins'})
     st.plotly_chart(fig, use_container_width=True)
 
-## EDA
+
+# ------------ EDA ------------
 elif option == 'EDA':
     st.subheader('Insights of Twitter sentiments')
     st.write('Since each tweet has a polarity score we classified them as positive or negative.')
@@ -99,11 +102,17 @@ elif option == 'EDA':
         with Image.open(wc) as img:
             st.image(img)
 
+# ------------ Predictions ------------
 else:
     model = st.sidebar.selectbox('Select a forecast method', ('VAR', 'LSTM', 'GRU'))
+    # VAR model
     if model == 'VAR':
         st.subheader('Vector Autoregressive Model')
-        st.write('Explanation')
+        st.write("""
+        It is a statistical model used for multivariate time series analysis.
+        It is used to capture a relationship between several variables as they change over time
+        and it provides a prediction for each one of them.
+        """)
         # plotly figure
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=var_forecast.index, y=var_forecast['actual'],
@@ -114,6 +123,7 @@ else:
                                  name='forecast'))
         # plot it
         st.plotly_chart(fig, use_container_width=True)
+    # LSTM model
     elif model == 'LSTM':
         st.subheader('Long Short-Term Memory (LSTM)')
         st.write('It is a type of recurrent neural network...')
@@ -127,6 +137,7 @@ else:
                                  name='forecast'))
         # plot it
         st.plotly_chart(fig, use_container_width=True)
+    # GRU model
     else:
         st.subheader('Gated Recurrent Units (GRU)')
         st.write('It is a type of recurrent neural network...')
